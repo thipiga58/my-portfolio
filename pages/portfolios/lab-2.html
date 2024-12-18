@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 3 - Thipiga Rajasekar</title>
+    <link rel="stylesheet" href="/my-portfolio/style.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <div id="header-placeholder"></div>
+
+    <h1>Lab 3</h1>
+
+    <h2 class="pf-project-title">Virtual Event Management System</h2>
+    <br>
+    <!-- Table of Contents -->
+    <nav class="pf-nav">
+        <ul class="pf-key-features">
+            <li><a href="#intro">Introduction</a></li>
+            <li><a href="#dtd-code">DTD Code</a></li>
+            <li><a href="#validation-output">Validation Output</a></li>
+            <li><a href="#xml-diagram">XML Structure Diagram</a></li>
+            <li><a href="#xml_code_screenshots">XML Code Screenshots</a></li>
+        </ul>
+    </nav>
+
+    <main class="pf-main">
+        <!-- Introduction Section -->
+        <section class="pf-project-details" id="intro">
+            <h3 class="pf-key-features-header">Introduction</h3>
+            <p class="pf-project-description">This lab demonstrates the creation of a virtual event management system using XML and related technologies. It includes the structure of events, organizations, hosts, participants, and resources, along with DTD validation.</p>
+        </section>
+
+        <!-- DTD Code Section -->
+        <section class="pf-project-details" id="dtd-code">
+            <h3 class="pf-key-features-header">DTD Code</h3>
+            <pre>
+            &lt;!ELEMENT events (organization, event+)&gt;
+            &lt;!ELEMENT organization (orgName, logo, website?, socialMediaLink*)&gt;
+            &lt;!ELEMENT orgName (#PCDATA)&gt;
+            &lt;!ELEMENT logo (#PCDATA)&gt;
+            &lt;!ELEMENT website (#PCDATA)&gt;
+            &lt;!ELEMENT socialMediaLink (#PCDATA)&gt;
+            &lt;!ELEMENT event (eventName, date, hosts, participants, resources, feedback*)&gt;
+            &lt;!ATTLIST event eventID ID #REQUIRED&gt;
+            &lt;!ELEMENT eventName (#PCDATA)&gt;
+            &lt;!ELEMENT date EMPTY&gt;
+            &lt;!ATTLIST date start CDATA #REQUIRED end CDATA #REQUIRED&gt;
+            &lt;!ELEMENT hosts (host+)&gt;
+            &lt;!ELEMENT host (hostName, contactInfo)&gt;
+            &lt;!ATTLIST host hostID ID #REQUIRED&gt;
+            &lt;!ELEMENT hostName (#PCDATA)&gt;
+            &lt;!ELEMENT contactInfo (phone, email)&gt;
+            &lt;!ELEMENT phone (#PCDATA)&gt;
+            &lt;!ELEMENT email (#PCDATA)&gt;
+            &lt;!ELEMENT participants (participant+)&gt;
+            &lt;!ELEMENT participant (participantName, role, contact)&gt;
+            &lt;!ELEMENT participantName (#PCDATA)&gt;
+            &lt;!ELEMENT role (#PCDATA)&gt;
+            &lt;!ELEMENT contact (phone, email)&gt;
+            &lt;!ELEMENT resources (venue, equipment+, catering?)&gt;
+            &lt;!ELEMENT venue (location, capacity)&gt;
+            &lt;!ELEMENT location (#PCDATA)&gt;
+            &lt;!ELEMENT capacity (#PCDATA)&gt;
+            &lt;!ELEMENT equipment (#PCDATA)&gt;
+            &lt;!ELEMENT catering (#PCDATA)&gt;
+            &lt;!ELEMENT feedback (comment)&gt;
+            &lt;!ATTLIST feedback feedbackID ID #REQUIRED&gt;
+            &lt;!ELEMENT comment (#PCDATA)&gt;
+            </pre>
+        </section>
+
+        <!-- DTD and XML Validation Output Section -->
+        <h3 class="pf-screenshots-header">DTD and XML Validation Output:</h3>
+        <div class="pf-1-screenshot-gallery" id="validation-output">
+            <img src="/my-portfolio/assets/Validation-Output.png" alt="DTD and XML Validation Output" class="pf-1-screenshot">
+        </div>
+
+        <!-- XML Structure Diagram Section -->
+        <h3 class="pf-screenshots-header">XML Structure Diagram:</h3>
+        <div class="pf-1-screenshot-gallery" id="xml-diagram">
+            <img src="/my-portfolio/assets/XML_Structure_Diagram.png" alt="XML Structure Diagram" class="pf-1-screenshot">
+        </div>
+
+        <!-- XML Code Screenshots Section -->
+        <h3 class="pf-screenshots-header">XML Code Screenshots:</h3>
+        <div class="pf-screenshot-gallery" id="xml_code_screenshots">
+            <img src="/my-portfolio/assets/XML_Screenshot1.png" alt="Screenshot of XML document in browser" class="pf-screenshot">
+            <img src="/my-portfolio/assets/XML_Screenshot2.png" alt="Screenshot of XML document in browser" class="pf-screenshot">
+        </div>
+        <br>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="/my-portfolio/app.js" defer></script>
+</body>
+</html>

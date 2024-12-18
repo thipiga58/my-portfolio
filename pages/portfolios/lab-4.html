@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 4 - Generics in Dart</title>
+    <link rel="stylesheet" href="/my-portfolio/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+    <h1 class="h1">Lab 4</h1>
+
+    <h2 class="pf-project-title">Generics in Dart</h2>
+
+
+    <nav class="pf-nav">
+        <ul class="pf-key-features">
+            <li><a href="#definition">Definition of the Concept</a></li>
+            <li><a href="#how-and-why-generics-are-used">How and Why Generics Are Used</a></li>
+            <li><a href="#comparison">Comparison with Similar Programming Concepts</a></li>
+            <li><a href="#advantages-and-limitations">Advantages and Limitations</a></li>
+            <li><a href="#example-implementations">Example Implementations</a></li>
+            <li><a href="#real-world-scenario">Real-World Scenario</a></li>
+            <li><a href="#references">References</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pf-main">
+        <!-- Topic Overview -->
+        <section class="pf-project-details">
+            <h3 class="pf-key-features-header" id="definition">Definition of the Concept</h3>
+            <p class="pf-project-description">
+                In Dart, Generics refer to a programming feature that allows classes, methods, and functions to operate on data types specified at runtime without sacrificing type safety. A generic type can represent any data type, enabling developers to write more flexible and reusable code by creating data structures and functions that work with any type, rather than only with a specific type.
+            </p>
+        </section>
+
+        <section class="pf-project-details" id="how-and-why-generics-are-used">
+            <h3 class="pf-key-features-header">How and Why Generics Are Used</h3>
+            <p class="pf-project-description">
+                Generics are widely used to improve code reusability and readability by allowing data types to remain flexible. With generics, developers can define a single, type-safe data structure or function that can handle different data types as needed. This flexibility is beneficial in creating consistent, reusable components across an application, such as in collections or data-handling utilities.
+            </p>
+        </section>
+
+        <section class="pf-project-details" id="comparison">
+            <h3 class="pf-key-features-header">Comparison with Similar Programming Concepts</h3>
+            <p class="pf-project-description">
+                In many languages, such as Java, C#, and C++, generics offer similar functionality but with some differences. In Dart, the concept of generics aligns closely with Java generics but differs slightly in syntax and use cases.
+            </p>
+        </section>
+
+        <section class="pf-project-details">
+            <h3 class="pf-key-features-header" id="advantages-and-limitations">Advantages and Limitations</h3>
+            <ul>
+                <li><strong>Advantages:</strong></li>
+                <ul>
+                    <li>Type Safety: Ensures type correctness at compile-time, reducing bugs.</li>
+                    <li>Reusability: Creates flexible and reusable code.</li>
+                    <li>Code Clarity: Makes code easier to understand and maintain.</li>
+                </ul>
+                <li><strong>Limitations:</strong></li>
+                <ul>
+                    <li>Complexity: Requires careful consideration of type constraints.</li>
+                    <li>Runtime Limitations: Sometimes requires checks or typecasting.</li>
+                    <li>Limited Constraint Options: Dart does not support multiple type constraints directly.</li>
+                </ul>
+            </ul>
+        </section>
+
+        <section class="pf-project-details">
+            <h3 class="pf-key-features-header" id="example-implementations">Example Implementations</h3>
+            <h3 class="pf-key-features-header">1. Pair Example</h3>
+            <pre><code>
+                class Pair<T, U> {
+                    T first;
+                    U second;
+
+                    Pair(this.first, this.second);
+                }
+                void main() {
+                    var pair = Pair<int, String>(1, "Thipiga");
+                    print(pair.first); // 1
+                    print(pair.second); // "Thipiga"
+                }
+            </code></pre>
+
+            <h3 class="pf-key-features-header">2. Stack Example</h3>
+            <pre><code>
+                class Stack<T> {
+                    final List<T> _items = [];
+                    
+                    void push(T item) {
+                        _items.add(item);
+                    }
+
+                    T pop() {
+                        return _items.removeLast();
+                    }
+                }
+                void main() {
+                    var stack = Stack<int>();
+                    stack.push(10);
+                    stack.push(20);
+                    print(stack.pop()); // 20
+                }
+            </code></pre>
+        </section>
+
+        <section class="pf-project-details">
+            <h3 class="pf-key-features-header" id="real-world-scenario">Real-World Scenario</h3>
+            <p class="pf-project-description">
+                Generics can be used in an app to manage a library of books. For example, you can use a generic Stack class to store and remove book titles dynamically as the user interacts with the app.
+            </p>
+        </section>
+
+        <section class="pf-project-details">
+            <h3 class="pf-key-features-header" id="references">References</h3>
+            <ul>
+                <li>Generics. (n.d.). Dart. <a href="https://dart.dev/language/generics">https://dart.dev/language/generics</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <script src="/my-portfolio/app.js" defer></script>
+</body>
+</html>

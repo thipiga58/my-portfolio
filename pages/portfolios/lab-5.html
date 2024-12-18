@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 5 - Thipiga Rajasekar</title>
+    <link rel="stylesheet" href="/my-portfolio/style.css">
+</head>
+<body>
+    <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+    <h1>Lab 5</h1>
+
+    <h2 class="pf-project-title">Flutter Introduction</h2>
+
+    <main class="pf-main">
+        <section class="pf-project-details">
+            <h3 class="pf-key-features-header">Definition and Basic Explanation</h3>
+            <p class="pf-project-description">In Flutter, the lifecycle of a widget refers to the sequence of stages a widget goes through during its existence. Understanding and responding to these lifecycle events helps manage resources, handle state changes, and optimize performance.</p>
+            <p class="pf-project-description">StatefulWidgets go through several lifecycle stages, with key methods like:</p>
+            <ul>
+                <li><strong>initState():</strong> Initializes the widget when created.</li>
+                <li><strong>didChangeDependencies():</strong> Called when widget dependencies change.</li>
+                <li><strong>build():</strong> Rebuilds the widget UI when state changes.</li>
+                <li><strong>didUpdateWidget():</strong> Reacts to changes in parent widget configuration.</li>
+                <li><strong>dispose():</strong> Cleans up resources when the widget is removed.</li>
+            </ul>
+        </section>
+        <section class="pf-project-details">
+            <h3 class="pf-key-features-header">Importance in Mobile App Development</h3>
+            <p class="pf-project-description">Widget lifecycle events are crucial for:</p>
+            <ul>
+                <li>Efficient resource management and cleanup.</li>
+                <li>Optimizing app performance by avoiding unnecessary rebuilds.</li>
+                <li>Graceful handling of state changes for smooth app behavior.</li>
+            </ul>
+            <p class="pf-project-description">For example, <strong>initState()</strong> is ideal for fetching user data when a widget is first created.</p>
+        </section>
+        <section class="pf-project-details">
+            <h3 class="pf-key-features-header">Comparison with Other Frameworks</h3>
+            <ul>
+                <li><strong>React Native:</strong> Lifecycle methods like <code>componentDidMount()</code> and <code>componentWillUnmount()</code> correspond to Flutter's <code>initState()</code> and <code>dispose()</code>.</li>
+                <li><strong>SwiftUI:</strong> Hooks like <code>onAppear()</code> and <code>onDisappear()</code> mirror Flutter’s lifecycle stages.</li>
+                <li><strong>Jetpack Compose:</strong> Uses <code>remember</code> and <code>LaunchedEffect</code> for similar lifecycle management.</li>
+            </ul>
+        </section>
+        <section class="pf-project-details">
+            <h3 class="pf-key-features-header">Advantages and Disadvantages</h3>
+            <h3 class="pf-key-features-header">Advantages</h3>
+            <ul>
+                <li>Fine-grained control over initialization and cleanup.</li>
+                <li>Improved performance by optimizing rebuilds.</li>
+                <li>Easy resource management.</li>
+            </ul>
+            <h3 class="pf-key-features-header">Disadvantages</h3>
+            <ul>
+                <li>Increased complexity in managing multiple lifecycle events.</li>
+                <li>Risk of memory leaks if cleanup is not handled properly.</li>
+                <li>Potential overhead in handling lifecycle methods inefficiently.</li>
+            </ul>
+        </section>
+        <section class="pf-project-details">
+            <h3 class="pf-key-features-header">Example Implementation</h3>
+            <div class="example">
+                <h3 class="pf-key-features-header">Fetching Data and Cleaning Up Resources</h3>
+                <div class="code-block">
+        <pre><code>
+            import 'dart:async';
+            import 'package:flutter/material.dart';
+
+            void main() => runApp(MyApp());
+
+            class MyApp extends StatelessWidget {
+            @override
+            Widget build(BuildContext context) {
+                return MaterialApp(
+                home: Scaffold(
+                    appBar: AppBar(title: Text('Lifecycle Example')),
+                    body: DataFetcherWidget(),
+                ),
+                );
+            }
+            }
+
+            class DataFetcherWidget extends StatefulWidget {
+            @override
+            _DataFetcherWidgetState createState() => _DataFetcherWidgetState();
+            }
+
+            class _DataFetcherWidgetState extends State<DataFetcherWidget> {
+            late Future<String> _dataFuture;
+            late StreamSubscription _subscription;
+            String _displayData = "Loading...";
+
+            @override
+            void initState() {
+                super.initState();
+                _dataFuture = _fetchData();
+                _subscription = Stream.periodic(Duration(seconds: 1), (count) => 'Stream count: $count')
+                .take(5)
+                .listen((data) {
+                    setState(() {
+                    _displayData = data;
+                    });
+                });
+            }
+
+            Future<String> _fetchData() async {
+                await Future.delayed(Duration(seconds: 2));
+                return "Fetched data!";
+            }
+
+            @override
+            void dispose() {
+                _subscription.cancel();
+                super.dispose();
+            }
+
+            @override
+            Widget build(BuildContext context) {
+                return Center(
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                    FutureBuilder<String>(
+                        future: _dataFuture,
+                        builder: (context, snapshot) {
+                        if (snapshot.connectionState == ConnectionState.waiting) {
+                            return CircularProgressIndicator();
+                        }
+                        if (snapshot.hasError) {
+                            return Text('Error: ${snapshot.error}');
+                        }
+                        return Text(snapshot.data ?? 'No data');
+                        },
+                    ),
+                    SizedBox(height: 20),
+                    Text(_displayData),
+                    ],
+                ),
+                );
+            }
+            }
+        </code></pre>
+                </div>
+                <p class="pf-project-description"><strong>Explanation:</strong> Demonstrates data fetching in <code>initState()</code> and cleanup in <code>dispose()</code>.</p>
+            </div>
+        </section>
+    
+    </main>
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <script src="/my-portfolio/app.js" defer></script>
+</body>
+</html>
