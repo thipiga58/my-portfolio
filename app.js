@@ -34,6 +34,9 @@ function setupMenuToggle() {
     }
 }
 
-// Load the header and footer, then initialize the menu toggle
-loadHTML('header-placeholder', '/my-portfolio/components/header.html', setupMenuToggle);
-loadHTML('footer-placeholder', '/my-portfolio/components/footer.html');
+// // Load the header and footer, then initialize the menu toggle
+// loadHTML('header-placeholder', '/my-portfolio/components/header.html', setupMenuToggle);
+// loadHTML('footer-placeholder', '/my-portfolio/components/footer.html');
+
+loadHTML('header-placeholder', '/components/header.html', setupMenuToggle);
+loadHTML('footer-placeholder', '/components/footer.html');
